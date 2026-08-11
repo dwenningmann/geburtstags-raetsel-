@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dein Gewinn - Kinogutschein</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #0d1117; 
+            color: #c9d1d9; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            overflow: hidden; 
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #161b22;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        /* Der Gutschein-Inhalt im Hintergrund */
+        .voucher-content {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 1s ease-in-out 0.5s;
+            max-height: 100%;
+            overflow-y: auto;
+            width: 100%;
+        }
+        .voucher-content.revealed {
+            opacity: 1;
+            transform: scale(1);
+        }
+        h1 { color: #58a6ff; font-size: 24px; margin-top: 0; }
+        .voucher-box {
+            background: #fff;
+            color: #000;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: left;
+        }
+        .voucher-box h2 { color: #b62324; margin-top: 0; font-size: 20px; text-align: center; }
+        .code-highlight {
+            background: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border: 2px dashed #b62324;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        /* Kino-Vorhang Animation */
+        .curtain {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, #8b0000 0%, #5a0000 100%);
+            z-index: 10;
+            transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+        }
+        .curtain.left {
+            left: 0;
+            transform-origin: left;
+            border-right: 3px solid #d4af37; /* Goldene Vorhangstange/Kante */
+        }
+        .curtain.right {
+            right: 0;
+            transform-origin: right;
+            border-left: 3px solid #d4af37;
+        }
+        .open .curtain.left {
+            transform: translateX(-100%);
+        }
+        .open .curtain.right {
+            transform: translateX(100%);
+        }
+        .start-btn {
+            position: absolute;
+            z-index: 20;
+            background: #da3633;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: transform 0.2s, background 0.2s;
+        }
+        .start-btn:hover { background: #f85149; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="stage">
+        <!-- Linker und Rechter Kino-Vorhang -->
+        <div class="curtain left"></div>
+        <div class="curtain right"></div>
+
+        <!-- Start-Button, der den Vorhang öffnet -->
+        <button class="start-btn" id="openBtn" onclick="openCurtains()">🎬 Vorhang auf für den Gewinn!</button>
+
+        <!-- Der eigentliche Gutschein-Inhalt -->
+        <div class="voucher-content" id="voucher">
+            <h1>🎉 Herzlichen Glückwunsch!</h1>
+            <p>Du hast alle Rätsel erfolgreich gelöst. Hier ist dein Gewinn für den Traumpalast Leonberg:</p>
+            
+            <div class="voucher-box">
+                <h2>🎬 TRAUMPALAST WERTGUTSCHEIN</h2>
+                <p><strong>Wert:</strong> 50,00 €</p>
+                <p><strong>Gültig für:</strong> Traumpalast Leonberg & alle Kinos der Lochmann Filmtheaterbetriebe</p>
+                <p><strong>Gültig bis:</strong> 31.12.2029</p>
+                
+                <div class="code-highlight">5050021017gWq2</div>
+                
+                <p style="font-size: 13px; color: #555; text-align: center;">
+                    Einlösbar online auf kinoheld.de (Kino: Traumpalast Leonberg) oder direkt vor Ort im Kino. Bestellnummer: 2618650220066
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openCurtains() {
+            const stage = document.getElementById('stage');
+            const btn = document.getElementById('openBtn');
+            const voucher = document.getElementById('voucher');
+
+            // Button ausblenden
+            btn.style.opacity = '0';
+            setTimeout(() => btn.style.display = 'none', 300);
+
+            // Vorhang öffnen-Klasse hinzufügen
+            stage.classList.add('open');
+
+            // Inhalt einblenden nach kurzer Verzögerung
+            setTimeout(() => {
+                voucher.classList.add('revealed');
+            }, 800);
+        }
+    </script>
+</body>
+</html>
