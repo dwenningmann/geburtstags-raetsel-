@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alles Gute!</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0d1117; color: #c9d1d9; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .card { background: #161b22; padding: 30px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); width: 100%; max-width: 500px; border: 1px solid #30363d; text-align: center; }
+        h1 { color: #58a6ff; font-size: 26px; margin-top: 0; }
+        p { line-height: 1.6; text-align: left; margin: 15px 0; }
+        button { background: #238636; color: white; border: none; padding: 12px 20px; border-radius: 6px; font-size: 16px; cursor: pointer; width: 100%; font-weight: bold; transition: background 0.2s; }
+        button:hover { background: #2ea043; }
+        .error { color: #f85149; margin-top: 10px; font-size: 14px; min-height: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Herzlichen Glückwunsch! 🎉</h1>
+        <p>Du hast heute Geburtstag, aber mein System schenkt dir nichts umsonst. Um an dein Geschenk zu kommen, musst du dir deine Belohnung heute hart erarbeiten.</p>
+        <p>Bist du bereit, dich durch 6 Level zu knobeln?</p>
+        <button onclick="window.location.href='level2.html'">Start!</button>
+        <div id="error" class="error"></div>
+    </div>
+</body>
+</html>
