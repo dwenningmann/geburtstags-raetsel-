@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 4: Die Matrix</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0d1117; color: #c9d1d9; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .card { background: #161b22; padding: 30px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); width: 100%; max-width: 500px; border: 1px solid #30363d; text-align: center; }
+        h1 { color: #58a6ff; font-size: 26px; margin-top: 0; }
+        p { line-height: 1.6; text-align: left; margin: 15px 0; }
+        input { width: 100%; padding: 12px; margin: 15px 0; background: #0d1117; border: 1px solid #30363d; color: #fff; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
+        button { background: #238636; color: white; border: none; padding: 12px 20px; border-radius: 6px; font-size: 16px; cursor: pointer; width: 100%; font-weight: bold; transition: background 0.2s; }
+        button:hover { background: #2ea043; }
+        .error { color: #f85149; margin-top: 10px; font-size: 14px; min-height: 1.2em; }
+        .matrix { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
+        .cell { background: #21262d; border: 1px solid #30363d; padding: 15px; font-size: 20px; font-weight: bold; color: #58a6ff; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Level 4: Die Matrix</h1>
+        <p>Finde das System:</p>
+        <div class='matrix'><div class='cell'>4</div><div class='cell'>7</div><div class='cell'>11</div><div class='cell'>5</div><div class='cell'>9</div><div class='cell'>14</div><div class='cell'>6</div><div class='cell'>11</div><div class='cell' style='color:#f85149'>?</div></div>
+        <input type="text" id="answer" placeholder="Deine Lösung..." autocomplete="off">
+        <button onclick="checkAnswer()">Lösung prüfen</button>
+        <div id="error" class="error"></div>
+    </div>
+    <script>
+        function checkAnswer() {
+            const val = document.getElementById("answer").value.trim().toLowerCase();
+            if (val === "18") {
+                window.location.href = "level5.html";
+            } else {
+                document.getElementById("error").innerText = "Falsch! Versuch es nochmal.";
+            }
+        }
+        document.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") { document.querySelector("button").click(); }
+        });
+    </script>
+</body>
+</html>
